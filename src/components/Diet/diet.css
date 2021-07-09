@@ -1,0 +1,25 @@
+.container {
+    border: 1px solid #333;
+    border-radius: 10px;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    margin-left: 200px;
+    margin-top: 60px;
+
+
+}
+@media only screen and (max-width: 992px) {
+    .container {
+        margin-left: 50px;
+        margin-right: 10px;
+    }
+}
+h2, h4 {
+    text-align: center;
+}
+p{
+    max-width: 50ch;
+    padding: 0 1em;
+    line-height: 1.5;
+}
