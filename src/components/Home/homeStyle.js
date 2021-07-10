@@ -2,21 +2,18 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 display: flex;
-
 @media screen and (max-width: 500px){
     display: flex;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
 }
-
     
     form {
         display: inline-block;
         flex-direction: column;
         margin-left: 50px;
         margin-top: 50px;
-
         @media (max-width: 768px) {
             font-size: 14px;
             
@@ -27,10 +24,8 @@ display: flex;
             margin-bottom: 10px;
             display: grid;
             font-weight: bold;
-
         }
         input {
-
             border-radius: 10px;
             border: none;
             height: 25px;

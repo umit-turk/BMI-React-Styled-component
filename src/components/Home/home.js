@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Diet from "../Diet/Diet";
 import { Container } from "./homeStyle";
 
 function Home() {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [bmiResult, setBmiResult] = useState(null);
+  const [bmiResult, setBmiResult] = useState(() => {
+    const initialValue = [];
+    const data = localStorage.getItem('bmi');
+    if(data !== null){
+      return JSON.parse(data);
+      
+    }
+    return initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("bmi", JSON.stringify(bmiResult));
+  }, [bmiResult]);
+
   const [status, setStatus] = useState("");
 
   function handleSubmit(e) {
@@ -22,6 +35,15 @@ function Home() {
     setWeight("");
     setHeight("");
   }
+
+ /*  useEffect(() => {
+    const data = localStorage.getItem("bmi");
+    if (data) {
+      setBmiResult(JSON.parse(data));
+    }
+  }, []); */
+
+  
 
   function getStatus(bmi) {
     if (bmi < 0) return "Hatalı veri girdiniz";
@@ -50,13 +72,14 @@ function Home() {
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
               placeholder="Kg"
+              
             />
           </div>
           <button type="submit" onClick={calculateBMI}>
             Hesapla
           </button>
-          {bmiResult < 0 && <span>Hatalı değer girdiniz!</span>}
-          {bmiResult && bmiResult > 0 && (
+          {bmiResult < 0 && height === 0 || height < 0 && <span>Hatalı değer girdiniz!</span>}
+          {bmiResult > 0  &&  (
             <>
               <div className="results">
                 <p>Durumunuz: {status}</p>
@@ -68,7 +91,7 @@ function Home() {
       </div>
       {bmiResult && bmiResult > 0 && (
         <div className="diet">
-          <Diet />
+          <Diet bmiResult={bmiResult}/>
         </div>
       )}
     </Container>
