@@ -1,4 +1,6 @@
 # Getting Started with Create React App
+https://nervous-haibt-10d6f8.netlify.app/
+
 
 Bu uygulama ile kullanıcılar boy ve kilolarını girerek vücut kitle endeksini hesaplayabilirler. Çıkan sonuca göre kullanıcıya bir diyet listesi verilir.
 
